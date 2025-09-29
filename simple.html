@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Index</title>
+  <style>
+    :root{--bg:#f7f7f9;--card:#fff;--accent:#2563eb}
+    body{font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);margin:0;padding:24px;color:#111}
+    .card{background:var(--card);max-width:720px;margin:32px auto;padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    header{display:flex;align-items:center;justify-content:space-between}
+    h1{font-size:20px;margin:0}
+    p{color:#444}
+    button{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+    footer{font-size:13px;color:#666;margin-top:18px}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>Simple index.html</h1>
+      <button id="themeBtn">Toggle theme</button>
+    </header>
+
+    <section style="margin-top:12px">
+      <p>This is a tiny starter page — copy, edit, and open in your browser.</p>
+
+      <form id="demoForm" style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <input type="text" id="name" placeholder="Your name" aria-label="name" />
+        <button type="submit">Say hi</button>
+      </form>
+
+      <div id="out" style="margin-top:12px;color:#111"></div>
+    </section>
+
+    <footer>
+      Tip: open the browser console to see logs.
+    </footer>
+  </main>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const out = document.getElementById('out');
+    const form = document.getElementById('demoForm');
+
+    btn.addEventListener('click', () => {
+      const dark = document.documentElement.style.getPropertyValue('--bg') === '#111';
+      if (!dark) {
+        document.documentElement.style.setProperty('--bg', '#111');
+        document.documentElement.style.setProperty('--card', '#0b0b0b');
+        document.documentElement.style.setProperty('--accent', '#60a5fa');
+        document.body.style.color = '#e6eef8';
+      } else {
+        document.documentElement.style.setProperty('--bg', '#f7f7f9');
+        document.documentElement.style.setProperty('--card', '#fff');
+        document.documentElement.style.setProperty('--accent', '#2563eb');
+        document.body.style.color = '#111';
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim() || 'friend';
+      out.textContent = `Hello, ${name}! 👋`;
+      console.log('Greeted:', name);
+    });
+  </script>
+</body>
+</html>
