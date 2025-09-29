@@ -65,5 +65,25 @@
       console.log('Greeted:', name);
     });
   </script>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DVB0000067MtB',
+				'Employee_Agent_Channel',
+				'https://realthread--re2ai.sandbox.my.site.com/ESWEmployeeAgentChannel1759158047012',
+				{
+					scrt2URL: 'https://realthread--re2ai.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://realthread--re2ai.sandbox.my.site.com/ESWEmployeeAgentChannel1759158047012/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
